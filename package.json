@@ -1,11 +1,15 @@
 {
-  "name": "webpack-rails-example",
+  "name": "Shine",
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
     "stats-webpack-plugin": "^0.4.3",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
-    "webpack-dev-middleware": "1.7.0"
+    "webpack-dev-middleware": "1.7.0",
+    "css-loader": "",
+    "file-loader": "",
+    "style-loader": "",
+    "url-loader": ""
   }
 }
