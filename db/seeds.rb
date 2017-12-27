@@ -9,8 +9,8 @@
   Customer.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    username: "#{Faker::Internet.user.name}#{seed}",
-    email: Faker::Internet.username + seed.to_s + "@#{Faker::Internet.domain.name}"
+    username: "#{Faker::Internet.user_name}#{seed}",
+    email: Faker::Internet.user_name + seed.to_s + "@#{Faker::Internet.domain_name}"
   )
   print '.' if seed % 1000 == 0
 
