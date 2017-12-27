@@ -45,7 +45,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+# for webpack-rails, run start foreman instead of rails s
 gem 'foreman'
-
+#authentication via devise
 gem 'devise'
+# create data algorithmically with faker to simulate a datapool for search queries
+gem 'faker'
