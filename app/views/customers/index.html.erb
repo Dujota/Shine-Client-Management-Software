@@ -20,9 +20,9 @@
     <h1 class="h3">Results</h1>
   </header>
 
-  <% if @customer.present?  %>
+  <% if @customers.present?  %>
     <%= render partial: "pager",
-        locals: {keywords: @keywords, page: @page}
+        locals: {search_term: @search_term, page: @page}
     %>
   <% end %>
 
@@ -37,9 +37,9 @@
     <% end %>
   </ol>
 
-  <% if @customer.present? %>
+  <% if @customers.present? %>
   <%= render partial: "pager",
-      locals: {keywords: @keywords, page: @page}
+      locals: {search_term: @search_term, page: @page}
   %>
   <% end %>
 </section>
