@@ -24,6 +24,7 @@
     <%= render partial: "pager",
         locals: {keywords: @keywords, page: @page}
     %>
+  <% end %>
 
   <ol class="list-group">
     <% @customers.each do |customer| %>
@@ -35,4 +36,10 @@
       </li>
     <% end %>
   </ol>
+
+  <% if @customer.present? %>
+  <%= render partial: "pager",
+      locals: {keywords: @keywords, page: @page}
+  %>
+  <% end %>
 </section>
