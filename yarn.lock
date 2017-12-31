@@ -26,6 +26,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/http@^4.0.0":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.4.6.tgz#0af680c6710bdc026d940e225cfd0f6a5c005d0c"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/platform-browser-dynamic@^4.0.0":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.4.6.tgz#4d3d9a6a7bf2cf3de4058a615ae059eff641fa36"
@@ -5333,10 +5339,6 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.2.tgz#d697b99f1f59512df2751be42769c1580b5801fe"
   dependencies:
     minimalistic-assert "^1.0.0"
-
-webpac@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webpac/-/webpac-1.0.1.tgz#b4d77e768e52e4ee0d10448bc2de306ac51938a4"
 
 webpack-dev-middleware@1.7.0:
   version "1.7.0"
