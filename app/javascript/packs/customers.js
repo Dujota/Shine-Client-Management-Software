@@ -20,8 +20,8 @@ var CustomerSearchComponent = Component({
              bindon-ngModel="keywords" \
              class="form-control input-lg">\
       <span class="input-group-btn"> \
-        <input type="submit" value="Find Customers"\
-              on-click="searh()" \
+        <input type="submit" value="Find Customers" \
+              on-click="search()" \
               class="btn btn-primary btn-lg">\
       </span> \
     </div> \
