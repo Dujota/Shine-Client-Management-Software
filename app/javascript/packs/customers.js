@@ -17,10 +17,12 @@ var CustomerSearchComponent = Component({
       <label for="keywords" class="sr-only">Keywords></label> \
       <input type="text" id="keywords" name="keywords" \
              placeholder="First Name, Last Name, or Email Address"\
+             bindon-ngModel="keywords" \
              class="form-control input-lg">\
       <span class="input-group-btn"> \
         <input type="submit" value="Find Customers"\
-               class="btn btn-primary btn-lg">\
+              on-click="searh()" \
+              class="btn btn-primary btn-lg">\
       </span> \
     </div> \
   </form> \
@@ -46,6 +48,10 @@ var CustomerSearchComponent = Component({
   '
 }).Class({
   constructor: function() {
+    this.keywords = null;
+  },
+  search: function () {
+    alert("Searched for: " + this.keywords);
   }
 });
 
