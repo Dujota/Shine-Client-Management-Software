@@ -90,13 +90,18 @@ var CustomerSearchComponent = Component({
     this.customers = null;
     this.keywords = "";
   },
-  search: function () {
-    if (this.keywords == "pat") {
-      this.customers = RESULTS;
+  search: function() {
+  var self = this;
+  self.http.get(
+    "/customers.json?keywords=" + self.keywords
+  ).subscribe(
+    function(response) {
+      self.customers = response.json().customers;
+    },
+    function(response) {
+      window.alert(response);
     }
-    else {
-      this.customers = [];
-    }
+  );
   }
 });
 
