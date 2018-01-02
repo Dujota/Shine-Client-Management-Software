@@ -86,15 +86,21 @@ var CustomerSearchComponent = Component({
 </section> \
   '
 }).Class({
-  constructor: function() {
-    this.customers = null;
-    this.keywords = "";
-  },
+  constructor: [
+    Http,
+    // Router,
+    function(http) {
+    this.customers  = null;
+    this.http       = http;
+    this.keywords   = "";
+    // this.router     = router;
+    }
+  ],
   search: function() {
   var self = this; // saving this (search) into local variable so we can refer to the same thing throughout the code as "this" will change depending where we are.
   self.http.get(
     "/customers.json?keywords=" + self.keywords // this is the url to our rails controller with keywords in params
-  ).subscribe( // observable RxJS wait for http to finish then run functions in the subscribe 
+  ).subscribe( // observable RxJS wait for http to finish then run functions in the subscribe
     function(response) {
       self.customers = response.json().customers; // extracts results from response and sets it to customers
     },
@@ -106,7 +112,7 @@ var CustomerSearchComponent = Component({
 });
 
 var CustomerAppMpdule = NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpModule],
   declarations: [CustomerSearchComponent],
   bootstrap: [CustomerSearchComponent]
 }).Class({
