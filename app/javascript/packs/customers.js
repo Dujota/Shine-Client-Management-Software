@@ -91,15 +91,15 @@ var CustomerSearchComponent = Component({
     this.keywords = "";
   },
   search: function() {
-  var self = this;
+  var self = this; // saving this (search) into local variable so we can refer to the same thing throughout the code as "this" will change depending where we are. 
   self.http.get(
-    "/customers.json?keywords=" + self.keywords
+    "/customers.json?keywords=" + self.keywords // this is the url to our rails controller with keywords in params
   ).subscribe(
     function(response) {
-      self.customers = response.json().customers;
+      self.customers = response.json().customers; // extracts results from response and sets it to customers
     },
     function(response) {
-      window.alert(response);
+      window.alert(response); //error handling in case the http request fails
     }
   );
   }
