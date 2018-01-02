@@ -4,6 +4,7 @@ import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Http,HttpModule        } from "@angular/http";
 
 var RESULTS = [
   {
@@ -88,12 +89,10 @@ var CustomerSearchComponent = Component({
 }).Class({
   constructor: [
     Http,
-    // Router,
     function(http) {
     this.customers  = null;
     this.http       = http;
     this.keywords   = "";
-    // this.router     = router;
     }
   ],
   search: function() {
