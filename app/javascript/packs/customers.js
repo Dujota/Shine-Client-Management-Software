@@ -57,6 +57,7 @@ var CustomerSearchComponent = Component({
       <input type="text" id="keywords" name="keywords" \
              placeholder="First Name, Last Name, or Email Address"\
              bindon-ngModel="keywords" \
+             on-ngModelChange="search($event)" \
              class="form-control input-lg">\
       <span class="input-group-btn"> \
         <input type="submit" value="Find Customers" \
@@ -95,8 +96,12 @@ var CustomerSearchComponent = Component({
     this.keywords   = "";
     }
   ],
-  search: function() {
+  search: function($event) {
   var self = this; // saving this (search) into local variable so we can refer to the same thing throughout the code as "this" will change depending where we are.
+  self.keywords = $event
+  if (self.keywords.length < 3) {
+    return;
+  }
   self.http.get(
     "/customers.json?keywords=" + self.keywords // this is the url to our rails controller with keywords in params
   ).subscribe( // observable RxJS wait for http to finish then run functions in the subscribe
