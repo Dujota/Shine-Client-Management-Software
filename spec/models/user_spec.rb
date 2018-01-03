@@ -13,6 +13,5 @@ describe User do
         user.update_attribute(:email, "foo@bar.com)")
       }.to violate_check_constraint(:email_must_be_company_email)
     end
-
   end
 end
