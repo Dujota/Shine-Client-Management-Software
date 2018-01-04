@@ -1,4 +1,6 @@
 import 'hello_angular/polyfills';
+import "babel-polyfill";
+
 
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -69,7 +71,7 @@ var CustomerSearchComponent = Component({
       class="list-group-item clearfix"> \
       <h3 class="pull-right"> \
         <small class="text-uppercase">Joined</small> \
-        {{customer.created_at | date: format : "mediumDate"}} \
+        {{customer.created_at}} \
       </h3> \
       <h2 class="h3"> \
         {{customer.first_name}} {{customer.last_name}} \
@@ -117,3 +119,5 @@ var CustomerAppMpdule = NgModule({
 });
 
 platformBrowserDynamic().bootstrapModule(CustomerAppMpdule);
+
+//| date: format : "mediumDate"
