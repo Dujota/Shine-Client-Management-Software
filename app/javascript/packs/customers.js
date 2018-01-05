@@ -1,4 +1,4 @@
-import 'hello_angular/polyfills';
+import 'polyfills';
 import "babel-polyfill";
 
 
