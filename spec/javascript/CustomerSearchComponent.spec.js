@@ -63,7 +63,7 @@ describe('CustomerSearchComponent', function () {
         var response = td.object(["json"]);
         td.when(response.json()).thenReturn({customers: customers});
 
-        var observable = td.object(["describe"]);
+        var observable = td.object(["subscribe"]);
         td.when(observable.subscribe(
         td.callback(response),
         td.matchers.isA(Function))).thenReturn();
@@ -74,11 +74,32 @@ describe('CustomerSearchComponent', function () {
       });
 
       describe('A successfull search', function () {
-        it("sets the keywords to 'pat'");
-        it("sets the customers to the results of the HTTP call");
+        it("sets the keywords to 'pat'", function () {
+          component.search("pat");
+          expect(component.keywords).toBe("pat");
+        });
+        it("sets the customers to the results of the HTTP call", function () {
+          component.search("pat");
+          expect(component.customers).toBe(customers)
+        });
       });
 
       describe("A search that fails on the back-end", function () {
+
+        beforeEach(function () {
+          var response = "There was an error!";
+          var observable = td.object(["subscribe"]);
+
+          td.when(observable.subscribe(
+            td.matchers.isA(Function),
+            td.callback(response))).thenReturn();
+
+            mockHttp = td.object["get"];
+            td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+
+            component = new CustomerSearchComponent;
+        });
+
         it("sets the keywords to be 'pat'");
         it("leaves customers as null");
         it("alerts the user with the response message");
