@@ -27,8 +27,14 @@ describe('CustomerSearchComponent', function () {
     });
 
     describe("A search for 'pa', less than three characters", function () {
-      it("sets the keywords to be 'pa'");
-      it("does not make an HTTP call");
+      it("sets the keywords to be 'pa'", function () {
+        component.search('pa');
+        expect(component.keywords).toBe("pa");
+      });
+      it("does not make an HTTP call", function () {
+        component.search('pa')
+        td.verify(mockHttp.get(), {times: 0});
+      });
     });
 
 
