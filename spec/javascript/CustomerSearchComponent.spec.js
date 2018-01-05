@@ -84,9 +84,8 @@ describe('CustomerSearchComponent', function () {
         });
       });
 
-      describe("A search that fails on the back-end", function () {
-
-        beforeEach(function () {
+      describe("A search that fails on the back-end", function() {
+        beforeEach(function() {
           var response = "There was an error!";
           var observable = td.object(["subscribe"]);
 
@@ -94,15 +93,25 @@ describe('CustomerSearchComponent', function () {
             td.matchers.isA(Function),
             td.callback(response))).thenReturn();
 
-            mockHttp = td.object["get"];
-            td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+          mockHttp = td.object(["get"]);
+          td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
 
-            component = new CustomerSearchComponent;
+          component = new CustomerSearchComponent(mockHttp);
         });
 
-        it("sets the keywords to be 'pat'");
-        it("leaves customers as null");
-        it("alerts the user with the response message");
+        it("sets the keywords to be 'pat'",function() {
+          component.search("pat");
+          expect(component.keywords).toBe("pat");
+        });
+
+        it("leaves customers as null", function() {
+          component.search("pat");
+          expect(component.customers).toBe(null);
+        });
+
+        it("alerts the user with the response message", function () {
+          // to be implemented
+        });
       });
     });
   });
