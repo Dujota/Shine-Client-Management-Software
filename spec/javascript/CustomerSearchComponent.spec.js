@@ -110,7 +110,9 @@ describe('CustomerSearchComponent', function () {
         });
 
         it("alerts the user with the response message", function () {
-          // to be implemented
+          td.replace(window,"alert");
+          component.search("pat");
+          td.verify(window.alert("There was an error!"));
         });
       });
     });
