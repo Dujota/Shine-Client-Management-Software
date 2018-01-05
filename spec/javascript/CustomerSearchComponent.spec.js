@@ -39,6 +39,40 @@ describe('CustomerSearchComponent', function () {
 
 
     describe("A search for 'pat', three or more characters", function () {
+      var mockHttp = null
+      var customers = [
+        {
+          id: 1,
+          created_at: (new Date()).toString(),
+          first_name: "Pat",
+          last_name: "Jones",
+          username: 'pj',
+          email: 'pjones@somewhere.net'
+        },
+        {
+          id: 2,
+          created_at: (new Date()).toString(),
+          first_name: "Allan",
+          last_name: 'Smith',
+          username: 'as',
+          email: 'asmith@somewhere.net'
+        },
+      ];
+
+      beforeEach(function () {
+        var response = td.object(["json"]);
+        td.when(response.json()).thenReturn({customers: customers});
+
+        var observable = td.object(["describe"]);
+        td.when(observable.subscribe(
+        td.callback(response),
+        td.matchers.isA(Function))).thenReturn();
+
+        mockHttp = td.object(["get"]);
+        td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+        component = new CustomerSearchComponent(mockHttp);
+      });
+
       describe('A successfull search', function () {
         it("sets the keywords to 'pat'");
         it("sets the customers to the results of the HTTP call");
